@@ -3,6 +3,11 @@
 [ext_resource type="Script" uid="uid://cjil7c6veiim1" path="res://character_body_3d.gd" id="1_xhfnw"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ux12u"]
+radial_segments = 8
+rings = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6l4mb"]
+albedo_color = Color(0.61013335, 0.4510615, 0.77286685, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ep77b"]
 
@@ -11,6 +16,7 @@ script = ExtResource("1_xhfnw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=802850235]
 mesh = SubResource("CapsuleMesh_ux12u")
+surface_material_override/0 = SubResource("StandardMaterial3D_6l4mb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=742867124]
 shape = SubResource("CapsuleShape3D_ep77b")
