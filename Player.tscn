@@ -7,25 +7,46 @@ radial_segments = 8
 rings = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6l4mb"]
-albedo_color = Color(0.61013335, 0.4510615, 0.77286685, 1)
+albedo_color = Color(0.15940145, 0.5718864, 0.8052682, 1)
+roughness = 0.53
+
+[sub_resource type="PrismMesh" id="PrismMesh_ux12u"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w8oks"]
+albedo_color = Color(0.6390186, 0.6023999, 0.9254736, 1)
+metallic_specular = 1.0
+roughness = 0.22
+emission_enabled = true
+emission = Color(0.9869955, 0.8432807, 0.6911268, 1)
+emission_energy_multiplier = 5.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ep77b"]
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=1557324044]
 script = ExtResource("1_xhfnw")
+SPEED = 8.0
+sprint_speed = 13.0
+mouse_sensitivity = 0.119
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=802850235]
 mesh = SubResource("CapsuleMesh_ux12u")
 surface_material_override/0 = SubResource("StandardMaterial3D_6l4mb")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1659855909]
+transform = Transform3D(1, 0, 0, 0, -3.3508297e-08, 1, 0, -0.76658046, -4.371139e-08, 0, 0.38889158, -0.48406655)
+mesh = SubResource("PrismMesh_ux12u")
+surface_material_override/0 = SubResource("StandardMaterial3D_w8oks")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=742867124]
 shape = SubResource("CapsuleShape3D_ep77b")
 
 [node name="CameraRoot" type="Node3D" parent="." unique_id=2068812348]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8448154, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraRoot" unique_id=29674796]
 spring_length = 4.0
-margin = 5.0
+margin = 0.2
 
 [node name="Camera3D" type="Camera3D" parent="CameraRoot/SpringArm3D" unique_id=1347830709]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7231897, 3.793545)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.061169624, 0)
