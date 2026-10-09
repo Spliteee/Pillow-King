@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bl77pw1p78vte"]
+
+[ext_resource type="PackedScene" uid="uid://bjmefyaa4uq4c" path="res://Player.tscn" id="1_jy3yd"]
+[ext_resource type="PackedScene" uid="uid://bod7nq4ifhtma" path="res://Maps/sky.tscn" id="2_6l4mb"]
+
+[node name="Node3D" type="Node3D" unique_id=567674071]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=662840749]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2246933, -0.012023926, 6.7398634)
+use_collision = true
+size = Vector3(18.777206, 0.08459473, 25.248556)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D" unique_id=1433471354]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6953688, 0.33560562, -7.7009397)
+use_collision = true
+size = Vector3(3.630581, 0.63827515, 8.271368)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D" unique_id=2009929554]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49156, 0.6578293, 4.8187857)
+use_collision = true
+size = Vector3(3.630581, 1.5433197, 9.243106)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGBox3D" unique_id=529501361]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4633713, -0.8071618, -1.661397)
+operation = 2
+radius = 2.2270508
+height = 1.730957
+sides = 19
+
+[node name="CharacterBody3D" parent="." unique_id=1557324044 instance=ExtResource("1_jy3yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6327212, 1.0302739, 3.033188)
+
+[node name="Sky" parent="." unique_id=892737542 instance=ExtResource("2_6l4mb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4187517, 0, -9.876967)
