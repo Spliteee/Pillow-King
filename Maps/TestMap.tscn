@@ -28,7 +28,7 @@ height = 1.730957
 sides = 19
 
 [node name="CharacterBody3D" parent="." unique_id=1557324044 instance=ExtResource("1_jy3yd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6327212, 1.0302739, 3.033188)
+transform = Transform3D(-0.9984757, 0, -0.055193886, 0, 1, 0, 0.055193886, 0, -0.9984757, 3.3402843, 2.857152, -0.6071174)
 
 [node name="Sky" parent="." unique_id=892737542 instance=ExtResource("2_6l4mb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4187517, 0, -9.876967)
