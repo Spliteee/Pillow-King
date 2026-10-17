@@ -2,14 +2,12 @@
 
 [ext_resource type="Script" uid="uid://cmsyars8ultxc" path="res://Entities/kill_zone.gd" id="1_qyxoh"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ep77b"]
-size = Vector3(622.45044, 0.001, 605.9442)
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_15454"]
 
 [node name="KillZone" type="Area3D" unique_id=1629670752 groups=["KillZone"]]
 script = ExtResource("1_qyxoh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=957761762]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.068642, -24.775982, 97.88684)
-shape = SubResource("BoxShape3D_ep77b")
+shape = SubResource("WorldBoundaryShape3D_15454")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -26,7 +26,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_collab/plugin.cfg")
+enabled=PackedStringArray("res://addons/PointMaker/plugin.cfg", "res://addons/godot_collab/plugin.cfg")
 
 [global_group]
 

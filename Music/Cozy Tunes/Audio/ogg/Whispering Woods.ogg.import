@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bqklj8igu7llw"
+path="res://.godot/imported/Whispering Woods.ogg-3eb922c1abb19b9bacc5512003defa35.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/Cozy Tunes/Audio/ogg/Whispering Woods.ogg"
+dest_files=["res://.godot/imported/Whispering Woods.ogg-3eb922c1abb19b9bacc5512003defa35.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

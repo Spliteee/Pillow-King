@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://d86c3ffgnfmf"]
+
+[ext_resource type="SpriteFrames" uid="uid://c5q4xijomx0ut" path="res://addons/PointMaker/assets/top_loader_frames.tres" id="2_8clxw"]
+[ext_resource type="Script" uid="uid://dp506pjovvj2w" path="res://addons/PointMaker/scripts/top_loader_controller.gd" id="3_tjihd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tjihd"]
+size = Vector2(136, 178)
+
+[node name="top_loader" type="CharacterBody2D" node_paths=PackedStringArray("animation_sprite")]
+script = ExtResource("3_tjihd")
+animation_sprite = NodePath("AnimatedSprite2D")
+metadata/_custom_type_script = "uid://dp506pjovvj2w"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 1)
+sprite_frames = ExtResource("2_8clxw")
+animation = &"jump-up-right"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, -26)
+shape = SubResource("RectangleShape2D_tjihd")
