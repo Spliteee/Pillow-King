@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dojxhp1vcrr4o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ep77b"]
+size = Vector3(0.9645996, 0.13444519, 1.282959)
+
+[node name="Pillow" type="StaticBody3D" unique_id=856328635]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1019394900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48449707, 0.05983734, -0.60998535)
+shape = SubResource("BoxShape3D_ep77b")
+
+[node name="Node3D" type="CSGPolygon3D" parent="." unique_id=289346293]
+polygon = PackedVector2Array(0, 0, 0.11401352, 0.15827334, 0.8876146, 0.1423806, 1, 0)
+depth = 1.21

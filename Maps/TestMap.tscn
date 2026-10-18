@@ -106,10 +106,10 @@ radius = 144.33594
 height = 50.755886
 
 [node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Boss 1" unique_id=577860328]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150.32906, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 151.2375, 0)
 operation = 2
 radius = 104.00781
-height = 50.755886
+height = 59.638187
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Boss 1" unique_id=729941460]
 transform = Transform3D(1, 0, 0, 0, 0.6243274, 0, 0, 0, 1, 0, 70.19971, -123.96622)

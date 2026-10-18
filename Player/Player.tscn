@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bjmefyaa4uq4c"]
 
 [ext_resource type="Script" uid="uid://cjil7c6veiim1" path="res://Player/Player.gd" id="1_3qydi"]
+[ext_resource type="PackedScene" uid="uid://dojxhp1vcrr4o" path="res://Player/BeginnerPillow.tscn" id="2_q3lat"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ux12u"]
 radial_segments = 8
@@ -22,6 +23,91 @@ emission = Color(0.9869955, 0.8432807, 0.6911268, 1)
 emission_energy_multiplier = 5.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3qydi"]
+
+[sub_resource type="Animation" id="Animation_tok1r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PillowWeapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.57020456, -0.75258684, 0.78573287)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PillowWeapon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 1.4437282)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PillowWeapon:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ddoul"]
+resource_name = "Swing"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PillowWeapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.2, 0.35333335, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.57020456, -0.75258684, 0.78573287), Vector3(-1.9331226, 0.09486586, -0.47042572), Vector3(-0.12187189, -0.75258684, 1.7313483), Vector3(0.62397784, -1.0387664, 1.4755795), Vector3(-0.57020456, -0.75258684, 0.78573287)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PillowWeapon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.2, 0.35333335, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 1.4437282), Vector3(-0.43345428, -1.9123484, 1.8391091), Vector3(-9.1431716e-09, 0.28304046, 1.4437282), Vector3(0.2199559, 0.72650063, 1.2029611), Vector3(0, 0, 1.4437282)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PillowWeapon:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8g4oa"]
+_data = {
+&"RESET": SubResource("Animation_tok1r"),
+&"Swing": SubResource("Animation_ddoul")
+}
 
 [node name="Player" type="CharacterBody3D" unique_id=1557324044 groups=["Player"]]
 script = ExtResource("1_3qydi")
@@ -48,3 +134,12 @@ margin = 0.2
 
 [node name="Camera3D" type="Camera3D" parent="CameraRoot/SpringArm3D" unique_id=1347830709]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.061169624, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1565714074]
+libraries/ = SubResource("AnimationLibrary_8g4oa")
+
+[node name="PillowWeapon" type="Node3D" parent="." unique_id=1498521179]
+transform = Transform3D(0.12672645, -0.9919377, 0, 0.9919377, 0.12672645, 0, 0, 0, 1, -0.57020456, -0.75258684, 0.78573287)
+
+[node name="Pillow" parent="PillowWeapon" unique_id=856328635 instance=ExtResource("2_q3lat")]
+transform = Transform3D(0.993324, -0.00085291266, -0.11535462, -0.0008529052, 0.99989104, -0.0147373015, 0.11535462, 0.014737301, 0.993215, 0, 0, 0)

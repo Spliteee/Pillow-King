@@ -4,6 +4,7 @@ extends CharacterBody3D
 @onready var cspring: SpringArm3D = $CameraRoot/SpringArm3D
 @onready var cam: Camera3D = $CameraRoot/SpringArm3D/Camera3D
 @onready var playermesh: MeshInstance3D = $MeshInstance3D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 # Keep the original exported values so saved scenes / future tweaks keep working.
@@ -37,8 +38,10 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	elif event.is_action_pressed("left_click"):
+	if event.is_action_pressed("fire_0"):
+		# Re-grab the mouse if it was freed (Esc), and swing.
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		animation_player.play("Swing")
 
 
 func _unhandled_input(event: InputEvent) -> void:
