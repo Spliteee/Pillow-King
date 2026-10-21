@@ -29,7 +29,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PillowWeapon:position")
+tracks/0/path = NodePath("MeshInstance3D/PillowWeapon:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -41,7 +41,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PillowWeapon:rotation")
+tracks/1/path = NodePath("MeshInstance3D/PillowWeapon:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -53,7 +53,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PillowWeapon:scale")
+tracks/2/path = NodePath("MeshInstance3D/PillowWeapon:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -69,7 +69,7 @@ length = 1.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PillowWeapon:position")
+tracks/0/path = NodePath("MeshInstance3D/PillowWeapon:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -81,7 +81,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PillowWeapon:rotation")
+tracks/1/path = NodePath("MeshInstance3D/PillowWeapon:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -93,7 +93,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PillowWeapon:scale")
+tracks/2/path = NodePath("MeshInstance3D/PillowWeapon:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -138,8 +138,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.061169624, 0)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1565714074]
 libraries/ = SubResource("AnimationLibrary_8g4oa")
 
-[node name="PillowWeapon" type="Node3D" parent="." unique_id=1498521179]
+[node name="PillowWeapon" type="Node3D" parent="MeshInstance3D" unique_id=1498521179]
 transform = Transform3D(0.12672645, -0.9919377, 0, 0.9919377, 0.12672645, 0, 0, 0, 1, -0.57020456, -0.75258684, 0.78573287)
 
-[node name="Pillow" parent="PillowWeapon" unique_id=856328635 instance=ExtResource("2_q3lat")]
+[node name="Pillow" parent="MeshInstance3D/PillowWeapon" unique_id=856328635 instance=ExtResource("2_q3lat")]
 transform = Transform3D(0.993324, -0.00085291266, -0.11535462, -0.0008529052, 0.99989104, -0.0147373015, 0.11535462, 0.014737301, 0.993215, 0, 0, 0)

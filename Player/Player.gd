@@ -4,6 +4,7 @@ extends CharacterBody3D
 @onready var cspring: SpringArm3D = $CameraRoot/SpringArm3D
 @onready var cam: Camera3D = $CameraRoot/SpringArm3D/Camera3D
 @onready var playermesh: MeshInstance3D = $MeshInstance3D
+@onready var pillow_weapon: Node3D = $MeshInstance3D/PillowWeapon
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
@@ -100,32 +101,22 @@ func _physics_process(delta: float) -> void:
 	if move_direction.length() > 0.2:
 		_last_movement_direction = move_direction
 	var target_angle := Vector3.BACK.signed_angle_to(_last_movement_direction, Vector3.UP)
+	if pillow_weapon:
+		pillow_weapon.top_level = false
 	playermesh.rotation.y = lerp_angle(playermesh.rotation.y, target_angle, rotation_speed * delta)
 
 func respawn() -> void:
 	if not _place_at_spawn_point():
 		push_warning("Player.respawn(): no SpawnPoint found in the current map.")
 
-
-func _on_node_added(node: Node) -> void:
-	pass
-
-
-func _ensure_spawned() -> void:
-	pass
-
-
 func _place_at_spawn_point() -> bool:
 	var spawn_point := _find_spawn_point()
 	if spawn_point == null:
 		return false
-
-	# Teleport to the spawn point and clear any leftover momentum.
 	global_position = spawn_point.global_position
 	velocity = Vector3.ZERO
 	reset_physics_interpolation()
 	return true
-
 
 func _find_spawn_point() -> Node3D:
 	# Prefer a node in the "SpawnPoint" group, then fall back to a node named
