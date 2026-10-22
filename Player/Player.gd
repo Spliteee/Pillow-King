@@ -7,6 +7,10 @@ extends CharacterBody3D
 @onready var pillow_weapon: Node3D = $MeshInstance3D/PillowWeapon
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+var combo_count := 0
+var combo_timer: Timer
+var last_hit_time := 0.0
+
 
 # Keep the original exported values so saved scenes / future tweaks keep working.
 @export_group("Movement")
@@ -34,6 +38,11 @@ func _ready() -> void:
 	cspring.add_excluded_object(get_rid())
 	# Grab the mouse immediately so the orbit camera works from the start.
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	combo_timer = Timer.new()
+	combo_timer.wait_time = 1.0
+	combo_timer.one_shot = true
+	combo_timer.timeout.connect(func(): combo_count = 0)
+	add_child(combo_timer)
 
 
 func _input(event: InputEvent) -> void:
@@ -42,7 +51,9 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("fire_0"):
 		# Re-grab the mouse if it was freed (Esc), and swing.
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-		animation_player.play("Swing")
+		if animation_player:
+			animation_player.play("Swing")
+		_hit_enemies()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -104,6 +115,62 @@ func _physics_process(delta: float) -> void:
 	if pillow_weapon:
 		pillow_weapon.top_level = false
 	playermesh.rotation.y = lerp_angle(playermesh.rotation.y, target_angle, rotation_speed * delta)
+
+func _hit_enemies() -> void:
+	combo_count += 1
+	if combo_timer:
+		combo_timer.start()
+	
+	# Try to hit enemies with the pillow weapon
+	if pillow_weapon:
+		for child in pillow_weapon.get_children():
+			if child is Area3D:
+				var bodies = child.get_overlapping_bodies()
+				for body in bodies:
+					if body == self:
+						continue
+					if body.has_method("register_hit"):
+						body.register_hit()
+					elif body is CharacterBody3D:
+						var dir = (body.global_position - global_position).normalized()
+						dir.y = 0
+						body.velocity = dir * 6.0 + Vector3.UP * 2.0
+	
+	# Fallback shape query
+	var space_state = get_world_3d().direct_space_state
+	var query = PhysicsShapeQueryParameters3D.new()
+	var shape = BoxShape3D.new()
+	shape.size = Vector3(1.8, 1.0, 1.8)
+	query.shape = shape
+	query.transform = global_transform.translated(-global_transform.basis.z * 0.8)
+	query.collision_mask = 1
+	
+	var results = space_state.intersect_shape(query)
+	for result in results:
+		var collider = result.collider
+		if collider and collider != self:
+			if collider.has_method("register_hit"):
+				collider.register_hit()
+			elif collider is CharacterBody3D and collider != self:
+				var dir = (collider.global_position - global_position).normalized()
+				dir.y = 0
+				collider.velocity = dir * 6.0 + Vector3.UP * 2.0
+
+func knockback(force: Vector3) -> void:
+	velocity = force
+	# Stop sprinting momentum
+	if velocity.length() > 12.0:
+		velocity = velocity.normalized() * 12.0
+
+func take_damage(attacker: Node3D) -> void:
+	# Simple damage response - knock player back when hit by enemy
+	var dir = Vector3.ZERO
+	if attacker:
+		dir = (global_position - attacker.global_position).normalized()
+	dir.y = 0
+	velocity = dir * 10.0 + Vector3.UP * 4.0
+	# Re-capture mouse
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func respawn() -> void:
 	if not _place_at_spawn_point():

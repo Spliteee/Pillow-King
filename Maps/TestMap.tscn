@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bod7nq4ifhtma" path="res://Maps/sky.tscn" id="2_6l4mb"]
 [ext_resource type="PackedScene" uid="uid://d3lxrrkb0rmer" path="res://Entities/kill_zone.tscn" id="2_qixgj"]
 [ext_resource type="PackedScene" uid="uid://gu6ykdhdpv51" path="res://Entities/spawn_point.tscn" id="3_d41l6"]
+[ext_resource type="PackedScene" uid="uid://bocfup82f4xs1" path="res://Enemies/enemy1.tscn" id="4_enemy1"]
 [ext_resource type="Material" uid="uid://lft35drbv2tk" path="res://assets/textures/Rock Wall 17/2k/Rock Wall 17.tres" id="5_of52u"]
 
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_ydc41"]
@@ -12,10 +13,10 @@ size = Vector3(315, 300.843, 315)
 [node name="Node3D" type="Node3D" unique_id=567674071]
 
 [node name="Level 1" type="CSGBox3D" parent="." unique_id=662840749]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.451263, -0.012023926, 32.28797)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.451263, -0.053821288, 32.28797)
 material_override = ExtResource("1_qixgj")
 use_collision = true
-size = Vector3(95.2763, 0.08459473, 76.27155)
+size = Vector3(95.2763, 0.001, 76.27155)
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Level 1" unique_id=853591427]
 transform = Transform3D(0.9386499, 0.3412079, -0.05013546, -0.34487158, 0.92867845, -0.13645558, 0, 0.14537431, 0.98937684, -21.070627, 7.8264666, -25.48317)
@@ -42,6 +43,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1953583, 2.2616181, 2.62286
 use_collision = true
 size = Vector3(3.630581, 0.40299606, 8.271368)
 
+[node name="CSGBox3D7" type="CSGBox3D" parent="Level 1" unique_id=544684082]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.113, -3.3167982, -75.00379)
+use_collision = true
+size = Vector3(68.55063, 26.812338, 53.048283)
+
 [node name="CSGBox3D5" type="CSGBox3D" parent="Level 1" unique_id=2141117267]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.426075, 3.1953878, -7.6500797)
 use_collision = true
@@ -58,9 +64,9 @@ use_collision = true
 size = Vector3(3.630581, 0.5096092, 9.243106)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Level 1" unique_id=529501361]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4633713, -1.8226647, 2.3146706)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.520111, -1.8226647, -3.6386147)
 operation = 2
-radius = 9.869141
+radius = 18.510254
 height = 3.761963
 sides = 19
 
@@ -91,7 +97,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4187517, 0, -9.876967)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -19.281944, 0)
 
 [node name="SpawnPoint" parent="." unique_id=192751869 instance=ExtResource("3_d41l6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.266365, 2.4441652, 24.040806)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.1159, 19.50568, -37.911995)
+
+[node name="Enemy" parent="." unique_id=49259954 instance=ExtResource("4_enemy1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.6689, 1.4856668, 15.211168)
+
+[node name="Enemy2" parent="." unique_id=250566707 instance=ExtResource("4_enemy1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.709953, 1.4856668, 1.1050568)
+
+[node name="Enemy3" parent="." unique_id=424562836 instance=ExtResource("4_enemy1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.709953, 1.4856668, 55.70542)
+
+[node name="Enemy4" parent="." unique_id=1753703850 instance=ExtResource("4_enemy1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 179.89207, 49.731873, 145.77321)
+
+[node name="Enemy5" parent="." unique_id=1850403507 instance=ExtResource("4_enemy1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 179.89207, 49.731873, 182.3007)
+
+[node name="Enemy6" parent="." unique_id=816966512 instance=ExtResource("4_enemy1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 203.82716, 49.731873, 182.3007)
+
+[node name="Enemy7" parent="." unique_id=1055476182 instance=ExtResource("4_enemy1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 203.82716, 49.731873, 209.36012)
+
+[node name="Enemy8" parent="." unique_id=945861688 instance=ExtResource("4_enemy1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.1103, 49.731873, 160.86617)
 
 [node name="Boss 1" type="CSGCylinder3D" parent="." unique_id=1861287435]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 226.45293, 3.8333473, 184.88596)
